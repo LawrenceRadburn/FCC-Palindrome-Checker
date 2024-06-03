@@ -2,9 +2,14 @@ const textInput = document.getElementById("text-input");
 const checkButton = document.getElementById("check-btn");
 const result = document.getElementById("result");
 
+function isAlphanumericPalindrome(word) {
+    const cleanedWord = word.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+    const reversedWord = cleanedWord.split('').reverse().join('');
+    return cleanedWord === reversedWord;
+}
+
 checkButton.addEventListener("click", function buttonClick() {
     const input = textInput.value;
-    const alphanumericPalindrome = ;
     if (input === "") {
        alert("Please input a value");
     }
@@ -46,5 +51,11 @@ checkButton.addEventListener("click", function buttonClick() {
     }
     if (input === "five|\_/|four") {
         result.innerHTML = "five|\_/|four is not a palindrome.";
+    }
+    if (isAlphanumericPalindrome(input)) {
+        result.innerHTML = input + " is an alphanumeric palindrome";
+    }
+    else {
+        result.innerHTML = input + " is not an alphanumeric palindrome.";
     }
 });
